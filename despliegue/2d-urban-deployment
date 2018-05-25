@@ -1,0 +1,13 @@
+reset
+set term pngcairo font " Arial, 7 " size 1024, 768
+set output  "2dstats.png"
+set palette defined ( 0 'web-blue', 1 'green', 2 'greenyellow',3 'yellow',4 'yellow', 5 'goldenrod', 6 'orange', 7 'light-red', 8 'red')
+set style rect fc lt -1 fs solid 0.15 
+inputFile = 'urban-collect.dat'
+load '2dBLayout.dat'
+set offset 1,1,1,1
+set xrange [-2100:2060]
+set yrange [-2100:2560]
+set xlabel "x"
+set ylabel "y"
+plot inputFile using 3:4:(stringcolumn(1) eq "ED" ? (sprintf("")) :(sprintf("%s (%d, %d, %d)",stringcolumn(1),$3,$4,$5))): (stringcolumn(1) eq "ED" ? $8 :1/0) with labels point  pt 7 palette offset char 1,1 notitle 
