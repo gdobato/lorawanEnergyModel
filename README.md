@@ -1,5 +1,5 @@
 
-# LoraWan Enerngy Simulation
+# LoraWan Energy Simulation
 
 Based on NS-3/lorawan module
 
